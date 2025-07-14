@@ -1,0 +1,20 @@
+{
+  "name": "labs",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "main": "index.js",
+  "author": "",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.13",
+    "@types/selenium-webdriver": "^4.1.28",
+    "ms-chromium-edge-driver": "^0.5.1",
+    "selenium-webdriver": "^4.34.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
