@@ -1,5 +1,3 @@
-import { WebDriver } from "selenium-webdriver";
-import { Page } from "../commons/Page"
 import { ClassAttributePage } from "../pages/ClassAttributePage";
 import { strictEqual } from "assert/strict";
 import { ClientSideDelayPage } from "../pages/ClientSideDelayPage";
