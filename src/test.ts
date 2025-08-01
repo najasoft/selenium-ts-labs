@@ -1,8 +1,7 @@
 import { time } from "console";
+import * as assert from "assert"
 import { Actions, Browser, Builder, By, Key, Options, until, WebDriver, WebElement } from "selenium-webdriver";
 import chrome from "selenium-webdriver/chrome";
-import { json } from "stream/consumers";
-
 // Demo site
 const demo_site1_url = 'https://www.globalsqa.com/demo-site/';
 
@@ -205,4 +204,30 @@ async function dragAndDrop(): Promise<void> {
 }
 
 
-dragAndDrop();
+
+async function testqa1(): Promise<void> {
+    let errors: string[] = [];
+    const url: string = "https://shop.demoqa.com";
+    const driver: WebDriver = await new Builder().forBrowser(Browser.CHROME).build();
+    await driver.get(url);
+    const title: string = await driver.getTitle();
+    console.log(`Page title:${title}`);
+    const page_url: string = await driver.getCurrentUrl();
+    console.log(`Actual url:${page_url}`);
+    //Soft assert
+    try {
+        assert.equal(page_url, url, `Expected ${url}, but got ${page_url}`);
+
+    }
+    catch (err) {
+        console.log(err);
+    }
+    const source: string = await driver.getPageSource();
+    console.log(`Source length: ${source.length}`);
+    driver.quit();
+
+
+
+}
+
+testqa1();

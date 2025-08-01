@@ -1,0 +1,1 @@
+const url_links: string = 'https://demoqa.com/links';
