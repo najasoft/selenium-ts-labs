@@ -93,10 +93,29 @@ async function testJavaScriptAlerts(): Promise<void> {
 
     await driver.close();
 }
+//Unexpected alerts
+async function unexpectedAlerts(): Promise<void> {
+    const driver: WebDriver = await new Builder().forBrowser(Browser.CHROME).build();
+    await driver.manage().window().maximize();
+    await driver.get(alertsUrl);
+    try {
+        await driver.findElement(By.id('timerAlertButton'));
+        await driver.wait(until.alertIsPresent(), 10000);
+        const simpleAlert: Alert = driver.switchTo().alert();
+        simpleAlert.accept();
+        console.log('Simple alert accepted');
+    }
+    catch (err) {
+        console.log('unexpected alert not present');
+    }
+    finally {
+        driver.close();
+    }
+}
 
 async function runTests(): Promise<void> {
 
-    await testJavaScriptAlerts();
+    await unexpectedAlerts();
 }
 
 runTests().catch(err => `Error:${err}`);
